@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="Bvz2cC" name="Monju" jucerVersion="5.4.5" cppLanguageStandard="17"
+              projectType="guiapp" version="0.0.1" headerPath="../src&#10;">
+  <MAINGROUP id="HobIMG" name="Monju">
+    <GROUP id="{0496BFF1-A159-C16F-A163-AF3C0BCA9273}" name="src">
+      <GROUP id="{3F4638A3-21C3-A54C-45A5-4B13AE766D90}" name="gui">
+        <FILE id="u0lf6H" name="Document.cpp" compile="1" resource="0" file="../src/gui/Document.cpp"/>
+        <FILE id="G1B6pG" name="Document.h" compile="0" resource="0" file="../src/gui/Document.h"/>
+      </GROUP>
+      <GROUP id="{E663EF7B-EED9-0734-1883-1D886A46141C}" name="nodes">
+        <FILE id="k7pkH3" name="AudioNode.cpp" compile="1" resource="0" file="../src/nodes/AudioNode.cpp"/>
+        <FILE id="HNxDvT" name="AudioNode.h" compile="0" resource="0" file="../src/nodes/AudioNode.h"/>
+      </GROUP>
+      <FILE id="T6LDWM" name="App.cpp" compile="1" resource="0" file="../src/App.cpp"/>
+      <FILE id="ctWKTZ" name="base.h" compile="0" resource="0" file="../src/base.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="../builds/mac" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0&#10;">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="debug"/>
+        <CONFIGURATION isDebug="0" name="release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_events" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_video" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_osc" path="../libs/juce/modules"/>
+        <MODULEPATH id="monju" path="."/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <VS2019 targetFolder="../builds/win" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="debug"/>
+        <CONFIGURATION isDebug="0" name="release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_osc" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_events" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_core" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="monju" path="."/>
+      </MODULEPATHS>
+    </VS2019>
+    <LINUX_MAKE targetFolder="../builds/linux" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="debug"/>
+        <CONFIGURATION isDebug="0" name="release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_video" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_osc" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_opengl" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_graphics" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_events" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_dsp" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_core" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../libs/juce/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../libs/juce/modules"/>
+        <MODULEPATH id="monju" path="."/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="monju" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS JUCE_ALSA="1" JUCE_JACK="1" JUCE_ASIO="1" JUCE_WASAPI="1" JUCE_WASAPI_EXCLUSIVE="1"
+               JUCE_DIRECTSOUND="0" JUCE_USE_MP3AUDIOFORMAT="1" JUCE_USE_LAME_AUDIO_FORMAT="1"
+               JUCE_PLUGINHOST_VST="1" JUCE_PLUGINHOST_VST3="1" JUCE_PLUGINHOST_AU="1"
+               JUCE_PLUGINHOST_LADSPA="1" JUCE_USE_XRENDER="1" JUCE_WIN_PER_MONITOR_DPI_AWARE="0"/>
+</JUCERPROJECT>

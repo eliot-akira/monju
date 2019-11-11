@@ -1,0 +1,10 @@
+[submodule "libs/lua"]
+	path = libs/lua
+	url = https://github.com/lua/lua
+[submodule "libs/sol2"]
+	path = libs/sol2
+	url = https://github.com/ThePhD/sol2
+[submodule "libs/juce"]
+	path = libs/juce
+	url = https://github.com/WeAreRoli/JUCE.git
+	branch = master
