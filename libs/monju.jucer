@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Bvz2cC" name="monju" jucerVersion="5.4.5" cppLanguageStandard="17"
-              projectType="guiapp" version="0.0.1" headerPath="../../src&#10;&#10;">
+              projectType="guiapp" version="0.0.1" headerPath="../src&#10;"
+              defines="" reportAppUsage="0" displaySplashScreen="0">
   <MAINGROUP id="HobIMG" name="monju">
     <GROUP id="{0496BFF1-A159-C16F-A163-AF3C0BCA9273}" name="src">
       <GROUP id="{3F4638A3-21C3-A54C-45A5-4B13AE766D90}" name="gui">
@@ -17,7 +18,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="../builds/mac" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0&#10;">
+    <XCODE_MAC targetFolder="../builds/mac" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
@@ -42,7 +43,7 @@
         <MODULEPATH id="monju" path="."/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2019 targetFolder="../builds/win" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;">
+    <VS2019 targetFolder="../builds/win" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
@@ -67,7 +68,7 @@
         <MODULEPATH id="monju" path="."/>
       </MODULEPATHS>
     </VS2019>
-    <LINUX_MAKE targetFolder="../builds/linux" extraDefs="JUCE_PLUGINHOST_VST=1&#10;JUCE_PLUGINHOST_VST3=1&#10;">
+    <LINUX_MAKE targetFolder="../builds/linux" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
@@ -117,6 +118,6 @@
   </LIVE_SETTINGS>
   <JUCEOPTIONS JUCE_ALSA="1" JUCE_JACK="1" JUCE_ASIO="1" JUCE_WASAPI="1" JUCE_WASAPI_EXCLUSIVE="1"
                JUCE_DIRECTSOUND="0" JUCE_USE_MP3AUDIOFORMAT="1" JUCE_USE_LAME_AUDIO_FORMAT="1"
-               JUCE_PLUGINHOST_VST="1" JUCE_PLUGINHOST_VST3="1" JUCE_PLUGINHOST_AU="1"
-               JUCE_PLUGINHOST_LADSPA="1" JUCE_USE_XRENDER="1" JUCE_WIN_PER_MONITOR_DPI_AWARE="0"/>
+               JUCE_PLUGINHOST_VST3="1" JUCE_PLUGINHOST_AU="1" JUCE_PLUGINHOST_LADSPA="1"
+               JUCE_USE_XRENDER="1" JUCE_WIN_PER_MONITOR_DPI_AWARE="0" JUCE_PLUGINHOST_VST="0"/>
 </JUCERPROJECT>

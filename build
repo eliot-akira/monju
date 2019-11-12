@@ -1,0 +1,64 @@
+#!/bin/sh
+
+if [ -z "$1" ]; then
+
+  echo "Usage: build [command]"
+  echo "Commands:"
+  echo "  frut - Build FRUT builder, only needs to be run once"
+  echo "  app - Build the app for release"
+  echo "  debug - Build the app for debug"
+
+  exit
+fi
+
+buildCmake(){
+
+  echo "Building CMakeLists.txt"
+
+  ./libs/frut/prefix/FRUT/bin/Jucer2Reprojucer ./libs/monju.jucer ./libs/frut/prefix/FRUT/cmake/Reprojucer.cmake
+
+}
+
+if [ "frut" == "$1" ]; then
+
+  echo "Building FRUT"
+
+  cd libs/frut
+  if [ ! -d build ]; then mkdir build; fi
+  cd build
+
+  cmake .. -DCMAKE_INSTALL_PREFIX=../prefix -DJUCE_ROOT=../../juce
+
+  cmake --build . --target install
+
+  cd ../../..
+
+  echo "Next run: ./build app"
+
+  exit
+
+elif [ "debug" == "$1" ]; then
+
+  buildCmake
+
+  echo "\nBuilding the app for debug"
+
+  if [ ! -d builds ]; then mkdir builds; fi
+  cd builds
+
+  cmake .. -DCMAKE_BUILD_TYPE=debug
+  cmake --build .
+
+elif [ "app" == "$1" ]; then
+
+  buildCmake
+
+  echo "\nBuilding the app for release"
+
+  if [ ! -d builds ]; then mkdir builds; fi
+  cd builds
+
+  cmake .. -DCMAKE_BUILD_TYPE=release
+  cmake --build .
+
+fi
