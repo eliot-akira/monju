@@ -30,8 +30,8 @@ Document::Document(const JUCEApplication* app, sol::state* lua)
 {
     // GUI
 
-    int width = 420;
-    int height = 340;
+    int width = 900;
+    int height = 580;
 
     editor.reset (new CodeEditorComponent (document, &tokens));
 
@@ -39,9 +39,29 @@ Document::Document(const JUCEApplication* app, sol::state* lua)
     editor->setColour (CodeEditorComponent::lineNumberTextId, Colours::white);
     editor->setTabSize (2, true);
     editor->setFont (editor->getFont().withHeight (15));
-    editor->loadContent (
-        "beep()"
-        "print('hello world')"
+    editor->loadContent (R"(
+
+function printSortedKeys(obj)
+
+arr = {}
+
+for k,v in pairs(obj) do
+  arr[#arr+1] = tostring(k)
+end
+
+table.sort(arr)
+
+for k,v in pairs(arr) do
+  print(v)
+end
+
+end
+
+printSortedKeys(os)
+
+print('Today is ' .. os.date())
+
+)"
     );
 
     compileButton.setButtonText ("Compile");
@@ -75,13 +95,10 @@ Document::Document(const JUCEApplication* app, sol::state* lua)
         const auto script = document.getAllContent();
         std::string str = script.toStdString();
 
-        try
-        {
-            auto result = lua->script(str);
-        }
-        catch (const std::exception& e)
-        {
-            logList->addErrorMessage ( e.what() );
+        auto result = lua->safe_script(str, sol::script_pass_on_error);
+        if (!result.valid()) {
+            sol::error err = result;
+            logList->addErrorMessage ( err.what() );
         }
     };
 }
@@ -94,16 +111,17 @@ Document::~Document()
 
 void Document::updateBounds (int fullWidth, int fullHeight)
 {
+    int halfWidth = fullWidth / 2;
     int halfHeight = fullHeight / 2;
     int w = 0;
     int h = 20;
 
-    editor->setBounds (0, 0, fullWidth, halfHeight);
+    editor->setBounds (0, 0, halfWidth, fullHeight);
 
     w = 60;
-    compileButton.setBounds (fullWidth - w, 0, w, h);
+    compileButton.setBounds (halfWidth - w, 0, w, h);
 
-    logList.setBounds (0, halfHeight, fullWidth, halfHeight);
+    logList.setBounds (halfWidth, 0, halfWidth, fullHeight);
 }
 
 void Document::paint (Graphics& g)

@@ -7,18 +7,24 @@ namespace monju {
 class App : public JUCEApplication
 {
 public:
+    std::string name = ProjectInfo::projectName;
+    std::string version = ProjectInfo::versionString;
+
+    sol::state lua;
+    std::unique_ptr<Window> mainWindow;
+
     App() {};
     ~App() {};
 
-    const String getApplicationName() override { return ProjectInfo::projectName; }
-    const String getApplicationVersion() override { return ProjectInfo::versionString; }
+    const String getApplicationName() override { return name; }
+    const String getApplicationVersion() override { return version; }
 
     void initialise (const String& commandLine) override
     {
 
         // Lua environment
 
-        lua.open_libraries(sol::lib::base, sol::lib::package);
+        lua.open_libraries(); // sol::lib::base, sol::lib::package, sol::lib::table
 
         // GUI
 
@@ -68,10 +74,8 @@ public:
     */
     void resumed() override {};
 
-    sol::state lua;
-
 private:
-    std::unique_ptr<Window> mainWindow;
+
 };
 
 START_JUCE_APPLICATION (App)

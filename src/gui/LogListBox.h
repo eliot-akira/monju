@@ -30,7 +30,7 @@ public:
         g.setColour (textColor);
 
         g.drawText (logList[row],
-            Rectangle<int> (width, height).reduced (1, 0),
+            Rectangle<int> (width, height).reduced (5, 5),
             Justification::centredLeft, true
         );
     }
