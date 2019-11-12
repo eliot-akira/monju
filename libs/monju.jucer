@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="Bvz2cC" name="Monju" jucerVersion="5.4.5" cppLanguageStandard="17"
-              projectType="guiapp" version="0.0.1" headerPath="../src&#10;">
-  <MAINGROUP id="HobIMG" name="Monju">
+<JUCERPROJECT id="Bvz2cC" name="monju" jucerVersion="5.4.5" cppLanguageStandard="17"
+              projectType="guiapp" version="0.0.1" headerPath="../../src&#10;&#10;">
+  <MAINGROUP id="HobIMG" name="monju">
     <GROUP id="{0496BFF1-A159-C16F-A163-AF3C0BCA9273}" name="src">
       <GROUP id="{3F4638A3-21C3-A54C-45A5-4B13AE766D90}" name="gui">
         <FILE id="u0lf6H" name="Document.cpp" compile="1" resource="0" file="../src/gui/Document.cpp"/>

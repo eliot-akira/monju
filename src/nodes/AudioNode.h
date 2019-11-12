@@ -2,7 +2,7 @@
 
 #include "../base.h"
 
-namespace Monju {
+namespace monju {
 
 class AudioNode   : public AudioSource
 {

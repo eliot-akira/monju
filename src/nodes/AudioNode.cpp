@@ -2,7 +2,7 @@
 
 /** Based on juce::AudioAppComponent */
 
-namespace Monju {
+namespace monju {
 
 //==============================================================================
 AudioNode::AudioNode()

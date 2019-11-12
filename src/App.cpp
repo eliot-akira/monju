@@ -1,7 +1,8 @@
 #include "base.h"
+#include "gui/Window.h"
 #include "gui/Document.h"
 
-namespace Monju {
+namespace monju {
 
 class App : public JUCEApplication
 {
@@ -12,23 +13,19 @@ public:
     const String getApplicationName() override { return ProjectInfo::projectName; }
     const String getApplicationVersion() override { return ProjectInfo::versionString; }
 
-    void initialise (const String& /*commandLine*/) override
+    void initialise (const String& commandLine) override
     {
 
-        sol::state lua;
-        int x = 0;
+        // Lua environment
+
         lua.open_libraries(sol::lib::base, sol::lib::package);
-        lua.set_function("beep", [&x]{ ++x; });
-        lua.script(
-            "beep()"
-            "beep()"
-            "print('hello world')"
-            "print(x)"
-        );
-        assert(x == 2);
+
+        // GUI
+
+        Window::Config config { false };
 
         mainWindow.reset (
-            new MainWindow (getApplicationName(), new Document())
+            new Window (getApplicationName(), new Document(this, &lua), config)
         );
     }
 
@@ -71,49 +68,10 @@ public:
     */
     void resumed() override {};
 
-    class MainWindow    : public DocumentWindow
-    {
-    public:
-        MainWindow (String name, Component* component)  :
-            DocumentWindow (name,
-                Desktop::getInstance()
-                    .getDefaultLookAndFeel()
-                    .findColour (ResizableWindow::backgroundColourId),
-                DocumentWindow::allButtons
-            )
-        {
-            setUsingNativeTitleBar (true);
-
-            setContentOwned (component, true);
-
-           #if JUCE_IOS || JUCE_ANDROID
-            setFullScreen (true);
-           #else
-            setResizable (true, true);
-            centreWithSize (getWidth(), getHeight());
-           #endif
-
-            setVisible (true);
-        }
-
-        void closeButtonPressed() override
-        {
-            JUCEApplication::getInstance()->systemRequestedQuit();
-        }
-
-        /* Note: Be careful if you override any DocumentWindow methods - the base
-           class uses a lot of them, so by overriding you might break its functionality.
-           It's best to do all your work in your content component instead, but if
-           you really have to override any DocumentWindow methods, make sure your
-           subclass also calls the superclass's method.
-        */
-
-    private:
-        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainWindow)
-    };
+    sol::state lua;
 
 private:
-    std::unique_ptr<MainWindow> mainWindow;
+    std::unique_ptr<Window> mainWindow;
 };
 
 START_JUCE_APPLICATION (App)
