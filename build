@@ -3,6 +3,7 @@
 if [ -z "$1" ]; then
 
   echo "Usage: build [command]"
+
   echo "Commands:"
   echo "  frut - Build FRUT builder, only needs to be run once"
   echo "  app - Build the app for release"
@@ -11,12 +12,11 @@ if [ -z "$1" ]; then
   exit
 fi
 
-buildCmake(){
+buildCMakeLists(){
 
   echo "Building CMakeLists.txt"
 
   ./libs/frut/prefix/FRUT/bin/Jucer2Reprojucer ./libs/monju.jucer ./libs/frut/prefix/FRUT/cmake/Reprojucer.cmake
-
 }
 
 if [ "frut" == "$1" ]; then
@@ -33,13 +33,13 @@ if [ "frut" == "$1" ]; then
 
   cd ../../..
 
-  echo "Next run: ./build app"
+  echo "Next, run: ./build app"
 
   exit
 
 elif [ "debug" == "$1" ]; then
 
-  buildCmake
+  buildCMakeLists
 
   echo "\nBuilding the app for debug"
 
@@ -51,7 +51,7 @@ elif [ "debug" == "$1" ]; then
 
 elif [ "app" == "$1" ]; then
 
-  buildCmake
+  buildCMakeLists
 
   echo "\nBuilding the app for release"
 

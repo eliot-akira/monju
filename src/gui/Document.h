@@ -1,12 +1,15 @@
 #include "base.h"
+#include "App.h"
 #include "LogListBox.h"
 
 namespace monju {
 
+class App;
+
 class Document   : public Component
 {
 public:
-    Document(const JUCEApplication* app, sol::state* lua);
+    Document(monju::App* app);
     ~Document();
 
     void paint (Graphics& g) override;
@@ -15,10 +18,16 @@ public:
     void updateBounds(int fullWidth, int fullHeight);
 
 private:
-    CodeDocument document;
+
+    monju::App* app;
+    sol::state& lua;
+
     std::unique_ptr<CodeEditorComponent> editor;
-    TextButton compileButton;
+    CodeDocument document;
     LuaTokeniser tokens;
+
+    TextButton compileButton;
+    TextButton clearButton;
 
     LogListBox logList;
 

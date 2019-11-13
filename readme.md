@@ -1,6 +1,6 @@
 # Monju = Lua + Sol + JUCE
 
-An experimental framework for building audio/visual applications with the [Lua](https://github.com/lua/lua) language, [Sol](https://github.com/ThePhD/sol2/) for C++ bindings, and [JUCE](https://github.com/WeAreROLI/JUCE).
+An experimental environment for building audio/visual applications with the [Lua](https://github.com/lua/lua) language, [Sol](https://github.com/ThePhD/sol2/) for C++ bindings, and [JUCE](https://github.com/WeAreROLI/JUCE).
 
 ## Install
 
@@ -13,13 +13,15 @@ cd monju
 
 ### Projucer
 
-If you have Projucer, use the provided project file at `libs/monju.jucer`, and export to an IDE of choice.
+If you have Projucer, use the provided project file at `libs/monju.jucer`.
 
 ### FRUT and CMake
 
-Alternatively, use the included [FRUT](https://github.com/McMartin/FRUT) builder and build with `cmake`.
+Alternatively, use the included [FRUT](https://github.com/McMartin/FRUT) builder to generate `CMakeList.txt`, and build with `cmake`.
 
-First build `FRUT` itself. This is a builder that exports a Projucer file to `CMakeList.txt`.
+There is a small shell script named `build` in the root folder for this purpose.
+
+First build `FRUT` itself. This only needs to be done once per install.
 
 ```sh
 ./build frut

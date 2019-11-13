@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="Bvz2cC" name="monju" jucerVersion="5.4.5" cppLanguageStandard="17"
-              projectType="guiapp" version="0.0.1" headerPath="../src&#10;"
+              projectType="guiapp" version="0.0.1" headerPath="../src&#10;../../src&#10;"
               defines="" reportAppUsage="0" displaySplashScreen="0">
   <MAINGROUP id="HobIMG" name="monju">
     <GROUP id="{0496BFF1-A159-C16F-A163-AF3C0BCA9273}" name="src">

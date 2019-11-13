@@ -26,7 +26,9 @@ static CodeEditorComponent::ColourScheme luaColors()
     return cs;
 }
 
-Document::Document(const JUCEApplication* app, sol::state* lua)
+Document::Document(monju::App* app) :
+    app(app),
+    lua(app->lua)
 {
     // GUI
 
@@ -35,71 +37,71 @@ Document::Document(const JUCEApplication* app, sol::state* lua)
 
     editor.reset (new CodeEditorComponent (document, &tokens));
 
+
+
+    editor->loadContent (R"(print(os.date())
+)"
+    );
     editor->setColour (CodeEditorComponent::backgroundColourId, Colours::white);
     editor->setColour (CodeEditorComponent::lineNumberTextId, Colours::white);
     editor->setTabSize (2, true);
     editor->setFont (editor->getFont().withHeight (15));
-    editor->loadContent (R"(
-
-function printSortedKeys(obj)
-
-arr = {}
-
-for k,v in pairs(obj) do
-  arr[#arr+1] = tostring(k)
-end
-
-table.sort(arr)
-
-for k,v in pairs(arr) do
-  print(v)
-end
-
-end
-
-printSortedKeys(os)
-
-print('Today is ' .. os.date())
-
-)"
-    );
 
     compileButton.setButtonText ("Compile");
-
-    // Lua
-
-    int x = 0;
-
-    lua->set_function ("beep", [&x] {
-        ++x;
-    });
-
-    lua->set_function ("print", [this, logList  = &logList](std::string str) {
-        logList->addMessage (str);
-    });
+    clearButton.setButtonText ("Clear");
 
     // GUI show
 
     setOpaque (false);
 
-    addAndMakeVisible (logList);
     addAndMakeVisible (editor.get());
+    addAndMakeVisible (logList);
     addAndMakeVisible (compileButton);
+    addAndMakeVisible (clearButton);
 
     updateBounds (width, height);
+
     setSize (width, height);
 
-    // Bind handlers
-    compileButton.onClick = [this, lua, logList = &logList]()
-    {
-        const auto script = document.getAllContent();
-        std::string str = script.toStdString();
+    // Lua
 
-        auto result = lua->safe_script(str, sol::script_pass_on_error);
+    lua.set_function ("print", [this](std::string str) {
+        logList.addMessage (str);
+    });
+
+    auto m = lua.create_table();
+
+    m["x"] = 1;
+
+    m["ping"] = [this, m]() {
+        int x = m["x"];
+        logList.addMessage ( "x=" + String(x));
+        return "pong";
+    };
+
+    lua["m"] = m;
+
+    std::function<void()> onCompile = [this]()
+    {
+        auto result = lua.safe_script(
+            document.getAllContent().toStdString(),
+            sol::script_pass_on_error
+        );
+
         if (!result.valid()) {
             sol::error err = result;
-            logList->addErrorMessage ( err.what() );
+            logList.addErrorMessage ( err.what() );
         }
+    };
+
+    onCompile();
+
+    // Bind handlers
+
+    compileButton.onClick = onCompile;
+    clearButton.onClick = [this]()
+    {
+        logList.clear();
     };
 }
 
@@ -113,20 +115,31 @@ void Document::updateBounds (int fullWidth, int fullHeight)
 {
     int halfWidth = fullWidth / 2;
     int halfHeight = fullHeight / 2;
+    int margin = 5;
     int w = 0;
     int h = 20;
+    int x = 0;
+    int y = margin;
 
-    editor->setBounds (0, 0, halfWidth, fullHeight);
+    editor->setBounds (x, 0, halfWidth, fullHeight);
+
+    // From right
 
     w = 60;
-    compileButton.setBounds (halfWidth - w, 0, w, h);
+    x = fullWidth - w - margin;
+    clearButton.setBounds (x, y, w, h);
+
+    x -= w + margin;
+    compileButton.setBounds (x, y, w, h);
+
+    // Console
 
     logList.setBounds (halfWidth, 0, halfWidth, fullHeight);
 }
 
 void Document::paint (Graphics& g)
 {
-    g.fillAll (Colours::transparentWhite); // getLookAndFeel().findColour (ResizableWindow::backgroundColourId)
+    g.fillAll (Colours::black); // getLookAndFeel().findColour (ResizableWindow::backgroundColourId)
 }
 
 void Document::resized()
