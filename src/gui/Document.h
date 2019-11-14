@@ -6,7 +6,8 @@ namespace monju {
 
 class App;
 
-class Document   : public Component
+class Document :
+    public Component
 {
 public:
     Document(monju::App* app);
@@ -21,15 +22,33 @@ private:
 
     monju::App* app;
     sol::state& lua;
+    std::string originalPackagePath;
 
     std::unique_ptr<CodeEditorComponent> editor;
     CodeDocument document;
     LuaTokeniser tokens;
 
-    TextButton compileButton;
+    std::unique_ptr<FileChooser> fileChooser;
+    File currentFile;
+
+    TextButton selectFileButton;
+    TextButton reloadButton;
+    TextButton runButton;
     TextButton clearButton;
 
     LogListBox logList;
+
+    void onSelectFile ();
+    void updatePackagePath ();
+
+    void readFile (const File& fileToRead);
+    void readFile (const File& fileToRead, bool doRun);
+
+    void onRun ();
+    // Separate function to allow std::bind to onRun with no argument
+    void onRunWithContent (std::string content);
+
+    void onReload ();
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Document)
 };

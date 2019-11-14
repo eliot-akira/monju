@@ -13,6 +13,7 @@ public:
     {
         setModel (this);
         Component::setColour (ListBox::ColourIds::backgroundColourId, Colours::black);
+        setRowHeight(20); // 22 default
     }
     ~LogListBox() override = default;
 
@@ -31,8 +32,18 @@ public:
 
         g.setColour (textColor);
 
+        // ListBox does not support rows of varying heights..
+
+//         auto rect = Rectangle<int>(width, height).reduced (5, height);
+//         g.drawMultiLineText(logList[row],
+//             rect.getX(), rect.getY(),
+//             width,
+//             Justification::centredLeft,
+//             true
+//         );
+
         g.drawText (logList[row],
-            Rectangle<int> (width, height).reduced (5, 5),
+            Rectangle<int> (width, height).reduced (5, 3),
             Justification::centredLeft, true
         );
     }

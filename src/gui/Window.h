@@ -12,7 +12,7 @@ public:
         bool isMainWindow = false;
     };
 
-    Window (String name, Component* component, Config& config)  :
+    Window (String name, Component* component, Config config)  :
         DocumentWindow (name,
             Desktop::getInstance()
                 .getDefaultLookAndFeel()
@@ -23,6 +23,7 @@ public:
         ),
         config(config)
     {
+
         setUsingNativeTitleBar (true);
 
         setContentOwned (component, true);
@@ -57,7 +58,7 @@ public:
     */
 
 private:
-    Config& config;
+    Config config;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Window)
 };

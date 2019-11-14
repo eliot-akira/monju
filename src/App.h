@@ -13,6 +13,7 @@ public:
 
     sol::state lua;
     std::unique_ptr<Window> mainWindow;
+    File homePath;
 
     App();
     ~App();
