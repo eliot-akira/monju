@@ -30,7 +30,10 @@ public:
     /** Indicates that the user has tried to start up another instance of the app.
         This will get called even if moreThanOneInstanceAllowed() is false.
     */
-    void anotherInstanceStarted (const String& commandLine) override {};
+    void anotherInstanceStarted (const String& commandLine) override {
+
+        mainWindow->setVisible(true);
+    };
 
     /** Called when the operating system is trying to close the application.
 

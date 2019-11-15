@@ -23,15 +23,15 @@ jucer_project_begin(
 jucer_project_settings(
   PROJECT_NAME "monju"
   PROJECT_VERSION "0.0.1"
-  REPORT_JUCE_APP_USAGE ON # Required for closed source applications without an Indie or Pro JUCE license
-  DISPLAY_THE_JUCE_SPLASH_SCREEN ON # Required for closed source applications without an Indie or Pro JUCE license
+  REPORT_JUCE_APP_USAGE OFF # Required for closed source applications without an Indie or Pro JUCE license
+  DISPLAY_THE_JUCE_SPLASH_SCREEN OFF # Required for closed source applications without an Indie or Pro JUCE license
   PROJECT_TYPE "GUI Application"
   BUNDLE_IDENTIFIER "com.yourcompany.monju"
+  INCLUDE_BINARYDATA OFF
   CXX_LANGUAGE_STANDARD "C++17"
-  PREPROCESSOR_DEFINITIONS
-    "JUCE_PLUGINHOST_VST=0"
   HEADER_SEARCH_PATHS
     "../src"
+    "../../src"
 )
 
 jucer_project_files("monju/src/gui"
@@ -53,6 +53,12 @@ jucer_project_files("monju/src"
 #           Resource  Resource
   x         .         .         "../src/App.cpp"
   .         .         .         "../src/base.h"
+)
+
+jucer_project_files("monju"
+# Compile   Xcode     Binary    File
+#           Resource  Resource
+  .         x         .         "../assets/icon.png"
 )
 
 jucer_project_module(
@@ -89,7 +95,7 @@ jucer_project_module(
 jucer_project_module(
   juce_audio_processors
   PATH "../libs/juce/modules"
-  # JUCE_PLUGINHOST_VST
+  JUCE_PLUGINHOST_VST OFF
   JUCE_PLUGINHOST_VST3 ON
   JUCE_PLUGINHOST_AU ON
   JUCE_PLUGINHOST_LADSPA ON
@@ -198,6 +204,11 @@ jucer_export_target(
   EXTRA_PREPROCESSOR_DEFINITIONS
     "JUCE_PLUGINHOST_VST3=1"
     "JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0"
+  EXTRA_COMPILER_FLAGS
+    "-Wno-deprecated-declarations"
+  ICON_SMALL "../assets/icon.png"
+  ICON_LARGE "../assets/icon.png"
+  MICROPHONE_ACCESS ON
 )
 
 jucer_export_target_configuration(
@@ -217,6 +228,10 @@ jucer_export_target(
   # VST3_SDK_FOLDER
   EXTRA_PREPROCESSOR_DEFINITIONS
     "JUCE_PLUGINHOST_VST3=1"
+  EXTRA_COMPILER_FLAGS
+    "-Wno-deprecated-declarations"
+  ICON_SMALL "../assets/icon.png"
+  ICON_LARGE "../assets/icon.png"
 )
 
 jucer_export_target_configuration(
@@ -235,6 +250,10 @@ jucer_export_target(
   "Linux Makefile"
   EXTRA_PREPROCESSOR_DEFINITIONS
     "JUCE_PLUGINHOST_VST3=1"
+  EXTRA_COMPILER_FLAGS
+    "-Wno-deprecated-declarations"
+  ICON_SMALL "../assets/icon.png"
+  ICON_LARGE "../assets/icon.png"
 )
 
 jucer_export_target_configuration(

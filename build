@@ -12,11 +12,13 @@ if [ -z "$1" ]; then
   exit
 fi
 
+JUCER_PATH=./libs/monju.jucer
+
 buildCMakeLists(){
 
   echo "Building CMakeLists.txt"
 
-  ./libs/frut/prefix/FRUT/bin/Jucer2Reprojucer ./libs/monju.jucer ./libs/frut/prefix/FRUT/cmake/Reprojucer.cmake
+  ./libs/frut/prefix/FRUT/bin/Jucer2Reprojucer $JUCER_PATH ./libs/frut/prefix/FRUT/cmake/Reprojucer.cmake
 }
 
 if [ "frut" == "$1" ]; then

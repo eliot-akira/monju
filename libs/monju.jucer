@@ -2,8 +2,9 @@
 
 <JUCERPROJECT id="Bvz2cC" name="monju" jucerVersion="5.4.5" cppLanguageStandard="17"
               projectType="guiapp" version="0.0.1" headerPath="../src&#10;../../src&#10;"
-              defines="" reportAppUsage="0" displaySplashScreen="0">
+              reportAppUsage="0" displaySplashScreen="0" includeBinaryInJuceHeader="0">
   <MAINGROUP id="HobIMG" name="monju">
+    <GROUP id="{4AEE70E0-ADA3-A32A-1B34-10340C8ED5E1}" name="assets"/>
     <GROUP id="{0496BFF1-A159-C16F-A163-AF3C0BCA9273}" name="src">
       <GROUP id="{3F4638A3-21C3-A54C-45A5-4B13AE766D90}" name="gui">
         <FILE id="u0lf6H" name="Document.cpp" compile="1" resource="0" file="../src/gui/Document.cpp"/>
@@ -16,9 +17,13 @@
       <FILE id="T6LDWM" name="App.cpp" compile="1" resource="0" file="../src/App.cpp"/>
       <FILE id="ctWKTZ" name="base.h" compile="0" resource="0" file="../src/base.h"/>
     </GROUP>
+    <FILE id="rG1aMR" name="icon.png" compile="0" resource="0" file="../assets/icon.png"
+          xcodeResource="1"/>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="../builds/mac" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0&#10;">
+    <XCODE_MAC targetFolder="../builds/mac" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;JUCE_DISABLE_AUDIOPROCESSOR_BEGIN_END_GESTURE_CHECKING=0&#10;"
+               microphonePermissionNeeded="1" extraCompilerFlags="-Wno-deprecated-declarations&#10;"
+               bigIcon="rG1aMR" smallIcon="rG1aMR">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
@@ -43,7 +48,8 @@
         <MODULEPATH id="monju" path="."/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <VS2019 targetFolder="../builds/win" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;">
+    <VS2019 targetFolder="../builds/win" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;"
+            smallIcon="rG1aMR" bigIcon="rG1aMR" extraCompilerFlags="-Wno-deprecated-declarations&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
@@ -68,7 +74,8 @@
         <MODULEPATH id="monju" path="."/>
       </MODULEPATHS>
     </VS2019>
-    <LINUX_MAKE targetFolder="../builds/linux" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;">
+    <LINUX_MAKE targetFolder="../builds/linux" extraDefs="JUCE_PLUGINHOST_VST3=1&#10;"
+                smallIcon="rG1aMR" bigIcon="rG1aMR" extraCompilerFlags="-Wno-deprecated-declarations&#10;">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="debug"/>
         <CONFIGURATION isDebug="0" name="release"/>
