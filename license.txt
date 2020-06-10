@@ -1,15 +1,19 @@
+# Monju
+
+https://github.com/eliot-akira/monju - [MIT License](https://opensource.org/licenses/MIT)
+
 # Lua
 
-https://github.com/lua/lua - The MIT License (MIT) Copyright (c) 1994–2019 Lua.org, PUC-Rio.
+https://github.com/lua/lua - [MIT License](https://opensource.org/licenses/MIT) Lua.org, PUC-Rio.
 
 # sol2
 
-https://github.com/ThePhD/sol2 - The MIT License (MIT) Copyright (c) 2013-2019 Rapptz, ThePhD, and contributors
+https://github.com/ThePhD/sol2 - [MIT License](https://opensource.org/licenses/MIT) Rapptz, ThePhD, and contributors
 
 # JUCE
 
-https://github.com/WeAreRoli/JUCE  - [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+https://github.com/WeAreRoli/JUCE  - [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 # FRUT
 
-https://github.com/McMartin/FRUT - [GNU General Public License version 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+https://github.com/McMartin/FRUT - [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.en.html)
