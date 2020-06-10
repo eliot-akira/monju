@@ -33,6 +33,8 @@ Then build the app.
 ./build app
 ```
 
+The result will be in the folder `builds`.
+
 For debug build:
 
 ```sh
