@@ -48,7 +48,7 @@ Document::Document(monju::App* app) :
     reloadButton.setButtonText ("Reload");
     clearButton.setButtonText ("Clear");
 
-    fileChooser.reset (new FileChooser ("Select an Lua file...", File(), "*.lua"));
+    fileChooser.reset (new FileChooser ("Select a Lua file...", File(), "*.lua"));
 
     // GUI: Show
 
