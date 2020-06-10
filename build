@@ -38,10 +38,11 @@ if [ "frut" == "$1" ]; then
   echo "Next, run: ./build app"
 
   exit
+fi
 
-elif [ "debug" == "$1" ]; then
+buildCMakeLists
 
-  buildCMakeLists
+if [ "debug" == "$1" ]; then
 
   echo "\nBuilding the app for debug"
 
@@ -53,8 +54,6 @@ elif [ "debug" == "$1" ]; then
 
 elif [ "app" == "$1" ]; then
 
-  buildCMakeLists
-
   echo "\nBuilding the app for release"
 
   if [ ! -d builds ]; then mkdir builds; fi
@@ -62,5 +61,4 @@ elif [ "app" == "$1" ]; then
 
   cmake .. -DCMAKE_BUILD_TYPE=release
   cmake --build .
-
 fi

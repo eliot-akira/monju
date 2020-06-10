@@ -11,13 +11,9 @@ cd monju
 
 ## Build
 
-### Projucer
-
-If you have Projucer, use the provided project file at `libs/monju.jucer`.
-
 ### FRUT and CMake
 
-Alternatively, use the included [FRUT](https://github.com/McMartin/FRUT) builder to generate `CMakeList.txt`, and build with `cmake`.
+Use the included [FRUT](https://github.com/McMartin/FRUT) builder to generate `CMakeList.txt`, and build with `cmake`.
 
 There is a small shell script named `build` in the root folder for this purpose.
 
@@ -40,3 +36,17 @@ For debug build:
 ```sh
 ./build debug
 ```
+
+### Project files
+
+If you have Projucer, use the provided project file at `libs/monju.jucer`.
+
+#### Generated projects
+
+The following are generated from Projucer.
+
+For XCode on macOS, open `builds/mac/monju.xcodeproj`.
+
+For Visual Studio on Windows, open `builds/win/monju_App.vcxproj`.
+
+For Linux, open `builds/linux/Makefile`.

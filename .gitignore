@@ -1,1 +1,6 @@
-builds
+builds/*
+
+# Include projects exported from Projucer
+!builds/linux
+!builds/mac
+!builds/win
